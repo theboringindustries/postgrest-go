@@ -186,6 +186,12 @@ func (b *FilterRequestBuilder) Filter(column, operator, criteria string) *Filter
 	return b
 }
 
+func (b *FilterRequestBuilder) Params(column, value string) *FilterRequestBuilder {
+	b.params.Add(column, value)
+
+	return b
+}
+
 func (b *FilterRequestBuilder) Eq(column, value string) *FilterRequestBuilder {
 	return b.Filter(column, "eq", SanitizeParam(value))
 }
